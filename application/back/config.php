@@ -11,7 +11,9 @@ return [
         // 是否自动开启 SESSION
         'auto_start'     => true,
         // 设置session过期时间
-        "expire" => 7200,
+        "expire" => 3600,
+        //表示session保存在自己网站根目录中的runtime目录中
+        'path'=>TEMP_PATH,
     ],
 ]
  ?>

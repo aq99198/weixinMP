@@ -1,23 +1,14 @@
 <?php 
 	namespace app\back\controller;
-	use think\Controller;
-	use think\Session;
+	use app\back\controller\BaseController;
 
 	/**
 	 * 
 	 */
-	class Index extends Controller {
-		
-		public function _initialize() {
-    		//初始化的时候检查登录状态
-    		if (!Session::has('account')) {
-    			$this->redirect('login/index');
-    		}
-    	}
+	class Index extends BaseController {
 		
 		public function index() {
 			return $this->fetch();
-			// echo "back---index";
 		}
 
 		public function welcome() {

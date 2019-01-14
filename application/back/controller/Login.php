@@ -29,7 +29,16 @@
             if (md5($password) != $admin->password) {
                 $this->error('密码错误');
             }
-            Session::set('account', $account);
+
+            //生成token保存到数据库
+            $token = md5($admin->account . time());
+            $admin->token = $token;
+            $admin->save();
+
+            Session::set('admin.account', $account);
+            Session::set('admin.token', $token);
+            //记录Session开始时间
+			Session::set('session_start_time', time());
             $this->redirect('index/index');
         }
 
